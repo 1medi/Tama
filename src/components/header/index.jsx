@@ -16,9 +16,11 @@ const SquigglyUnderline = () => {
   const [selectedLink, setSelectedLink] = useState("Home");
 
   return (
-    <>
-      <div className="flex flex-row">
-        {/* <Image src={Tama} alt="tama wordmark" height={64} /> */}
+    <div className="flex flex-row justify-around">
+      <div className="p-4">
+        <Image src={Tama} alt="tama wordmark" height={64} />
+      </div>
+      <div className="flex justify-center items-center p-2">
         <div className="flex gap-16">
           {navigation.map((item) => {
             const isSelected = item.name === selectedLink;
@@ -60,7 +62,7 @@ const SquigglyUnderline = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
