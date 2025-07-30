@@ -5,7 +5,7 @@ export default function Section2() {
   return (
     <div className="flex flex-row">
       {/* Card 1 */}
-      <div className="h-[100vh] bg-amber-50 min-w-1/4 flex justify-center items-center m-auto rounded-bl-lg rounded tr-lg cursor-pointer">
+      <div className="h-[100vh] bg-background min-w-1/4 flex justify-center items-center m-auto rounded-bl-lg rounded tr-lg cursor-pointer">
         <motion.div
           className="p-8"
           whileHover={{ scale: 1.05 }}

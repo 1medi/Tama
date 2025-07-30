@@ -49,7 +49,7 @@ function Carousel() {
   };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden">
+    <div className="relative overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -57,21 +57,21 @@ function Carousel() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.4 }}
-          className="relative w-[100vw] h-screen"
+          className="relative h-screen m-4"
         >
           <Image
             src={items[index].url}
             fill
             alt={`carousel-image-${index}`}
-            className="object-cover "
+            className="object-cover rounded-xl "
           />
-          <div className="absolute left-[50px ] bottom-1/8 max-w-[500px] bg-white/80 px-4 py-2 rounded shadow text-black text-lg">
+          <div className="absolute bottom-4 left-4 p-4  rounded-lg bg-background shadow-gentle border border-border text-foreground">
             {items[index].description}
           </div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 flex items-center justify-between px-4">
+      <div className="absolute inset-0 flex items-center justify-between px-8">
         <button
           onClick={handlePrev}
           className="bg-white/70 hover:bg-white text-black px-3 py-1 rounded shadow hover:cursor-pointer"

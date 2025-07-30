@@ -1,6 +1,7 @@
 import { Arimo } from "next/font/google";
 import "./globals.css";
 
+
 const arimoSans = Arimo({
   variable: "--font-arimo-sans",
   subsets: ["latin"],
@@ -14,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html data-theme="retro" lang="en">
       <body
         className={`${arimoSans.variable} antialiased`}
       >
