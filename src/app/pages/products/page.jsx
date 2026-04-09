@@ -43,7 +43,7 @@ const brands = [
     description: "Snacks, drinks, noodles, and familiar quick-grab items.",
   },
   {
-    name: "More Brands Coming",
+    name: "And More!",
     image: "/tama.jpg",
     description: "More trusted brands and specialty finds available in store.",
   },

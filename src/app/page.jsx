@@ -277,7 +277,7 @@ export default function Home() {
                   className="mt-6 max-w-xl text-base leading-8 text-neutral-700 lg:text-lg"
                 >
                   Filipino and Asian groceries, fresh produce, pantry staples,
-                  and everyday essentials in one convenient neighborhood store.
+                  and essentials for the community in one convenient neighborhood store.
                 </motion.p>
               </motion.div>
 
@@ -455,43 +455,29 @@ export default function Home() {
                   A simple neighborhood grocery store
                 </h2>
                 <p className="text-neutral-700 leading-8 max-w-3xl text-base lg:text-lg">
-                  Tama Supermarket is a local grocery store serving customers
-                  looking for Filipino and Asian food, fresh produce, pantry
-                  staples, and everyday necessities. Our goal is to make grocery
-                  shopping easy, affordable, and familiar for the community.
+                  Derived for our last names Tabon and Martinez, Tama
+                  Supermarket is a local grocery store serving customers looking
+                  for Filipino and Asian goods, fresh produce, pantry staples,
+                  and everyday necessities.
+                  <br/>
+                  <p className="flex font-bold justify-center m-4">AND $1 Veggies and Fruit EVERYDAY</p>
                 </p>
               </motion.div>
-
               <motion.div
                 variants={fadeUp}
-                whileHover={{ y: -8 }}
-                className="rounded-[2rem] bg-[#c1684d]/10 border border-black/5 p-7 shadow-[0_10px_35px_rgba(0,0,0,0.04)]"
+                whileHover={{ y: -4 }}
+                className="relative rounded-[2rem] bg-white/70 border border-black/5 px-6 py-10 lg:px-10 lg:py-14 text-center shadow-[0_20px_60px_rgba(0,0,0,0.05)] backdrop-blur-md overflow-hidden"
               >
-                <div>
-                  <h3 className="text-2xl font-serif tracking-[-0.02em] mb-5">
-                    Why People Visit
-                  </h3>
+                {/* subtle glow accent */}
+                <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#c1684d]/10 to-transparent pointer-events-none" />
 
-                  <ul className="space-y-4 text-neutral-700">
-                    {[
-                      "Fresh produce for everyday meals and home cooking",
-                      "Filipino and Asian essentials you know and trust",
-                      "Quick, convenient shopping close to home",
-                      "Friendly service with fair, practical pricing",
-                    ].map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-3 leading-7"
-                      >
-                        {/* Accent dot */}
-                        <span className="mt-2 h-2 w-2 rounded-full bg-[#c1684d] flex-shrink-0" />
-
-                        {/* Text */}
-                        <span className="text-[0.98rem]">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <h4 className="relative text-3xl lg:text-5xl font-serif leading-[1.05] tracking-[-0.03em] text-neutral-900">
+                  Our goal is to make grocery shopping
+                  <br className="hidden lg:block" />
+                  <span className="text-[#c1684d]">easy and affordable</span>
+                  <br className="hidden lg:block" />
+                  for our community.
+                </h4>
               </motion.div>
             </div>
           </motion.div>
@@ -564,7 +550,7 @@ export default function Home() {
 
             <motion.div variants={fadeUp} className="mt-5 flex justify-center">
               <a
-                href="/products"
+                href="/pages/products"
                 className="group inline-flex items-center gap-2 rounded-full bg-[#c1684d] px-6 py-2.5 text-sm font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#a5543c]"
               >
                 Browse All Brands
@@ -648,7 +634,6 @@ export default function Home() {
                     >
                       Get Directions
                     </a>
-
                   </div>
                 </div>
               </motion.div>
