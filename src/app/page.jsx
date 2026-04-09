@@ -34,13 +34,13 @@ const storeInfo = {
   phone: "(604) 559-9593",
   email: "tamasupermarket@gmail.ca",
   hours: [
-    { day: "Monday", hours: "9:00 AM - 8:00 PM" },
-    { day: "Tuesday", hours: "9:00 AM - 8:00 PM" },
-    { day: "Wednesday", hours: "9:00 AM - 8:00 PM" },
-    { day: "Thursday", hours: "9:00 AM - 8:00 PM" },
-    { day: "Friday", hours: "9:00 AM - 8:00 PM" },
-    { day: "Saturday", hours: "9:00 AM - 8:00 PM" },
-    { day: "Sunday", hours: "9:00 AM - 8:00 PM" },
+    { day: "Monday", hours: "10:00 AM - 8:00 PM" },
+    { day: "Tuesday", hours: "10:00 AM - 8:00 PM" },
+    { day: "Wednesday", hours: "10:00 AM - 8:00 PM" },
+    { day: "Thursday", hours: "10:00 AM - 8:00 PM" },
+    { day: "Friday", hours: "10:00 AM - 8:00 PM" },
+    { day: "Saturday", hours: "10:00 AM - 8:00 PM" },
+    { day: "Sunday", hours: "10:00 AM - 8:00 PM" },
   ],
 };
 
