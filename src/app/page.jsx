@@ -561,7 +561,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section
+        {/* <section
           id="contact"
           className="relative border-b border-black/5 scroll-mt-24"
         >
@@ -657,7 +657,7 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
-        </section>
+        </section> */}
 
         {/* FAQ */}
         <section id="faq">
