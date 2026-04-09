@@ -186,13 +186,28 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const img = new window.Image();
-    img.src = "/tama.jpg";
-    img.onload = () => setLoaded(true);
+    setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [mounted]);
+
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    setReady(true);
+  }, []);
+
   return (
     <>
       <Header />
@@ -202,20 +217,22 @@ export default function Home() {
           <div className="relative h-screen w-full">
             <Image
               src="/1.jpg"
-              alt="Picture inside tama supermarket"
+              alt="Background"
               fill
-              priority
               className="object-cover object-center opacity-10"
+              priority={false} // or just remove it
             />
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-[-5rem] top-8 h-40 w-40 rounded-full bg-[#c1684d]/10 blur-3xl sm:h-56 sm:w-56 lg:h-72 lg:w-72" />
-          <div className="absolute right-[-5rem] top-24 h-44 w-44 rounded-full bg-[#f0b596]/16 blur-3xl sm:h-60 sm:w-60 lg:h-80 lg:w-80" />
-          <div className="hidden sm:block absolute left-1/3 top-[32rem] h-52 w-52 rounded-full bg-[#c1684d]/8 blur-3xl lg:h-64 lg:w-64" />
-          <div className="absolute right-1/4 bottom-[-3rem] h-40 w-40 rounded-full bg-[#f2c6ae]/16 blur-3xl sm:h-56 sm:w-56 lg:h-72 lg:w-72" />
-          <div className="absolute inset-0 opacity-[0.02] sm:opacity-[0.03] bg-[radial-gradient(circle,_#000_1px,_transparent_1px)] [background-size:18px_18px] sm:[background-size:22px_22px] lg:[background-size:24px_24px]" />
-        </div>
+        {mounted && (
+          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div className="absolute left-[-5rem] top-8 h-40 w-40 rounded-full bg-[#c1684d]/10 blur-3xl sm:h-56 sm:w-56 lg:h-72 lg:w-72" />
+            <div className="absolute right-[-5rem] top-24 h-44 w-44 rounded-full bg-[#f0b596]/16 blur-3xl sm:h-60 sm:w-60 lg:h-80 lg:w-80" />
+            <div className="hidden sm:block absolute left-1/3 top-[32rem] h-52 w-52 rounded-full bg-[#c1684d]/8 blur-3xl lg:h-64 lg:w-64" />
+            <div className="absolute right-1/4 bottom-[-3rem] h-40 w-40 rounded-full bg-[#f2c6ae]/16 blur-3xl sm:h-56 sm:w-56 lg:h-72 lg:w-72" />
+            <div className="absolute inset-0 opacity-[0.02] sm:opacity-[0.03] bg-[radial-gradient(circle,_#000_1px,_transparent_1px)] [background-size:18px_18px] sm:[background-size:22px_22px] lg:[background-size:24px_24px]" />
+          </div>
+        )}
 
         {/* Hero */}
         <section className="relative border-b border-black/5">
@@ -238,7 +255,7 @@ export default function Home() {
                   <motion.h1
                     className="text-5xl leading-[0.95] tracking-[-0.05em] lg:text-7xl font-serif"
                     initial="hidden"
-                    animate={loaded ? "show" : "hidden"}
+                    animate={mounted ? "show" : "hidden"}
                     variants={{
                       hidden: {},
                       show: {
@@ -277,7 +294,8 @@ export default function Home() {
                   className="mt-6 max-w-xl text-base leading-8 text-neutral-700 lg:text-lg"
                 >
                   Filipino and Asian groceries, fresh produce, pantry staples,
-                  and essentials for the community in one convenient neighborhood store.
+                  and essentials for the community in one convenient
+                  neighborhood store.
                 </motion.p>
               </motion.div>
 
@@ -290,24 +308,34 @@ export default function Home() {
                 <div className="absolute -inset-4 rounded-[2.5rem] bg-white/30 blur-2xl" />
 
                 <div className="relative h-[360px] lg:h-[520px] overflow-hidden rounded-[2rem] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={heroSlides[currentSlide].src}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.02 }}
-                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={heroSlides[currentSlide].src}
-                        alt={heroSlides[currentSlide].alt}
-                        fill
-                        className="object-cover"
-                        priority
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+                  {ready ? (
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={heroSlides[currentSlide].src}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.02 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0"
+                      >
+                        <Image
+                          src={heroSlides[currentSlide].src}
+                          alt={heroSlides[currentSlide].alt}
+                          fill
+                          priority={currentSlide === 0}
+                          className="object-cover"
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                  ) : (
+                    <Image
+                      src={heroSlides[0].src}
+                      alt={heroSlides[0].alt}
+                      fill
+                      priority
+                      className="object-cover"
+                    />
+                  )}
 
                   <div className="absolute inset-x-0 bottom-5 z-10 flex justify-center gap-2">
                     {heroSlides.map((_, index) => (
@@ -459,8 +487,10 @@ export default function Home() {
                   Supermarket is a local grocery store serving customers looking
                   for Filipino and Asian goods, fresh produce, pantry staples,
                   and everyday necessities.
-                  <br/>
-                  <p className="flex font-bold justify-center m-4">AND $1 Veggies and Fruit EVERYDAY</p>
+                  <br />
+                  <span className="flex font-bold justify-center m-4">
+                    AND $1 Veggies and Fruit EVERYDAY
+                  </span>
                 </p>
               </motion.div>
               <motion.div
@@ -559,105 +589,6 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </section>
-
-        {/* Contact */}
-        {/* <section
-          id="contact"
-          className="relative border-b border-black/5 scroll-mt-24"
-        >
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={stagger}
-            className="max-w-6xl mx-auto px-6 py-16"
-          >
-            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-stretch">
-              <motion.div
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                className="relative overflow-hidden rounded-[2rem] border border-black/5 bg-white/80 p-7 lg:p-8 shadow-[0_10px_35px_rgba(0,0,0,0.05)]"
-              >
-                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#c1684d]/10 to-transparent pointer-events-none" />
-
-                <div className="relative">
-                  <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-[#a5543c] mb-3">
-                    Visit Us
-                  </p>
-
-                  <h2 className="text-4xl lg:text-5xl font-serif leading-[0.98] tracking-[-0.04em] mb-4">
-                    Plan Your Visit
-                  </h2>
-
-                  <p className="text-neutral-700 leading-7 mb-6 max-w-md">
-                    Stop by for fresh produce, Filipino staples, pantry
-                    essentials, and everyday grocery finds in the neighbourhood.
-                  </p>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="rounded-[1.5rem] bg-[#fff7f2] border border-black/5 px-4 py-4">
-                      <p className="text-[0.68rem] uppercase tracking-[0.2em] text-neutral-500 mb-1">
-                        Address
-                      </p>
-                      <p className="text-neutral-800 font-medium">
-                        698 Kingsway, Vancouver, BC
-                      </p>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-3">
-                      <div className="rounded-[1.5rem] bg-white border border-black/5 px-4 py-4">
-                        <p className="text-[0.68rem] uppercase tracking-[0.2em] text-neutral-500 mb-1">
-                          Phone
-                        </p>
-                        <p className="text-neutral-800 font-medium">
-                          {storeInfo.phone}
-                        </p>
-                      </div>
-
-                      <div className="rounded-[1.5rem] bg-white border border-black/5 px-4 py-4">
-                        <p className="text-[0.68rem] uppercase tracking-[0.2em] text-neutral-500 mb-1">
-                          Email
-                        </p>
-                        <p className="text-neutral-800 font-medium break-words">
-                          {storeInfo.email}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap justify-center gap-3">
-                    <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=Tama+Supermarket+Vancouver+BC"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center rounded-full bg-[#c1684d] text-white px-5 py-2.5 text-sm font-medium transition duration-300 hover:-translate-y-0.5 hover:bg-[#a5543c]"
-                    >
-                      Get Directions
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                className="relative overflow-hidden rounded-[2rem] border border-black/5 bg-[#c1684d]/10 p-3 shadow-[0_10px_35px_rgba(0,0,0,0.05)] min-h-[320px] lg:min-h-[100%]"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.45),_transparent_35%)] pointer-events-none" />
-
-                <div className="relative h-full min-h-[320px] overflow-hidden rounded-[1.5rem] border border-white/40 bg-white/60 backdrop-blur-sm">
-                  <iframe
-                    src="https://www.google.com/maps?q=698+Kingsway+Vancouver+BC&output=embed"
-                    className="w-full h-full min-h-[320px] border-0"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Map showing Tama Supermarket location at 698 Kingsway, Vancouver, BC"
-                  ></iframe>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section> */}
 
         {/* FAQ */}
         <section id="faq">
