@@ -186,6 +186,13 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/tama.jpg";
+    img.onload = () => setLoaded(true);
+  }, []);
   return (
     <>
       <Header />
@@ -227,12 +234,43 @@ export default function Home() {
                   Since 2017 • Vancouver
                 </motion.p>
 
-                <motion.h1
-                  variants={fadeUp}
-                  className="max-w-2xl text-5xl leading-[0.95] tracking-[-0.05em] lg:text-7xl font-serif"
-                >
-                  Tama Supermarket
-                </motion.h1>
+                <div className="max-w-2xl overflow-hidden">
+                  <motion.h1
+                    className="text-5xl leading-[0.95] tracking-[-0.05em] lg:text-7xl font-serif"
+                    initial="hidden"
+                    animate={loaded ? "show" : "hidden"}
+                    variants={{
+                      hidden: {},
+                      show: {
+                        transition: {
+                          staggerChildren: 0.14,
+                          delayChildren: 0.25,
+                        },
+                      },
+                    }}
+                  >
+                    {["Tama", "Supermarket"].map((word) => (
+                      <motion.span
+                        key={word}
+                        variants={{
+                          hidden: { opacity: 0, y: 50, filter: "blur(8px)" },
+                          show: {
+                            opacity: 1,
+                            y: 0,
+                            filter: "blur(0px)",
+                            transition: {
+                              duration: 0.8,
+                              ease: [0.22, 1, 0.36, 1],
+                            },
+                          },
+                        }}
+                        className="inline-block mr-[0.2em]"
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
+                  </motion.h1>
+                </div>
 
                 <motion.p
                   variants={fadeUp}
@@ -429,15 +467,31 @@ export default function Home() {
                 whileHover={{ y: -8 }}
                 className="rounded-[2rem] bg-[#c1684d]/10 border border-black/5 p-7 shadow-[0_10px_35px_rgba(0,0,0,0.04)]"
               >
-                <h3 className="text-2xl font-serif tracking-[-0.02em] mb-4">
-                  Why People Visit
-                </h3>
-                <ul className="space-y-3 text-neutral-700 leading-7">
-                  <li>Fresh produce for everyday cooking</li>
-                  <li>Trusted Filipino and Asian grocery items</li>
-                  <li>Convenient local shopping</li>
-                  <li>Friendly service and practical prices</li>
-                </ul>
+                <div>
+                  <h3 className="text-2xl font-serif tracking-[-0.02em] mb-5">
+                    Why People Visit
+                  </h3>
+
+                  <ul className="space-y-4 text-neutral-700">
+                    {[
+                      "Fresh produce for everyday meals and home cooking",
+                      "Filipino and Asian essentials you know and trust",
+                      "Quick, convenient shopping close to home",
+                      "Friendly service with fair, practical pricing",
+                    ].map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 leading-7"
+                      >
+                        {/* Accent dot */}
+                        <span className="mt-2 h-2 w-2 rounded-full bg-[#c1684d] flex-shrink-0" />
+
+                        {/* Text */}
+                        <span className="text-[0.98rem]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -585,9 +639,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap justify-center gap-3">
                     <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=698+Kingsway+Vancouver+BC"
+                      href="https://www.google.com/maps/dir/?api=1&destination=Tama+Supermarket+Vancouver+BC"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center rounded-full bg-[#c1684d] text-white px-5 py-2.5 text-sm font-medium transition duration-300 hover:-translate-y-0.5 hover:bg-[#a5543c]"
@@ -595,14 +649,6 @@ export default function Home() {
                       Get Directions
                     </a>
 
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=698+Kingsway+Vancouver+BC"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center rounded-full border border-black/10 bg-white text-neutral-800 px-5 py-2.5 text-sm font-medium transition duration-300 hover:-translate-y-0.5 hover:bg-[#fff7f2]"
-                    >
-                      Open in Google Maps
-                    </a>
                   </div>
                 </div>
               </motion.div>
