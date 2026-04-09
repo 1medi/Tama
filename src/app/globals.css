@@ -1,8 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss";
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark, retro;
-};
+html {
+  scroll-behavior: smooth;
+}
 
+body {
+  font-family: var(--font-body), sans-serif;
+}
 
+/* override Tailwind serif globally */
+.font-serif {
+  font-family: var(--font-heading), serif;
+}
 
+h1, h2, h3 {
+  font-family: var(--font-heading), serif;
+  letter-spacing: 0.02em; /* helps match logo feel */
+}
