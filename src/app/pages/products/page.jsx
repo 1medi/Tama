@@ -14,36 +14,32 @@ const brands = [
   },
   {
     name: "Datu Puti",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Datu_Puti_logo.png/200px-Datu_Puti_logo.png",
+    image: "/datuputi.jpeg",
     description: "Vinegars, soy sauces, and pantry staples for everyday meals.",
   },
   {
     name: "Lucky Me!",
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Lucky_Me%21_logo.png/200px-Lucky_Me%21_logo.png",
+    image: "/luckyme.png",
     description: "Popular instant noodles and quick meal options.",
   },
   {
     name: "Silver Swan",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Silver_Swan_logo.png/200px-Silver_Swan_logo.png",
+    image: "/silverswan.jpeg",
     description: "Classic soy sauces and condiments used in Filipino cooking.",
   },
   {
-    name: "San Miguel",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/San_Miguel_logo.svg/200px-San_Miguel_logo.svg.png",
+    name: "UFC",
+    image: "/ufc.png",
     description: "Well-known Filipino beverages and pantry favorites.",
   },
   {
-    name: "Placeholder Brand",
-    image: "/insta1.jpg",
+    name: "Philippine Brand",
+    image: "/philippine.jpg",
     description: "Imported grocery products and everyday household staples.",
   },
   {
-    name: "Another Brand",
-    image: "/insta2.jpg",
+    name: "Don Chendo",
+    image: "/donchendo.png",
     description: "Snacks, drinks, noodles, and familiar quick-grab items.",
   },
   {
@@ -80,6 +76,17 @@ export default function ProductsPage() {
       <Header />
 
       <main className="relative overflow-hidden bg-[linear-gradient(to_bottom,_#fff7f2_0%,_#fde7dc_20%,_#fff3eb_48%,_#fffaf7_72%,_#ffffff_100%)] text-neutral-900">
+        <div className="pointer-events-none fixed inset-0 ">
+          <div className="relative h-screen w-full">
+            <Image
+              src="/1.jpg"
+              alt="Picture inside tama supermarket"
+              fill
+              priority
+              className="object-cover object-center opacity-10"
+            />
+          </div>
+        </div>
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[-8rem] top-16 h-64 w-64 rounded-full bg-[#c1684d]/10 blur-3xl" />
           <div className="absolute right-[-6rem] top-40 h-72 w-72 rounded-full bg-[#f0b596]/20 blur-3xl" />
@@ -111,10 +118,10 @@ export default function ProductsPage() {
 
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href="tel:+16041234567"
+                    href="tel:+16045599593"
                     className="inline-flex items-center rounded-full bg-[#c1684d] px-5 py-2.5 text-sm font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#a5543c]"
                   >
-                    Call (604) 123-4567
+                    Call (604) 559-9593
                   </a>
 
                   <a
