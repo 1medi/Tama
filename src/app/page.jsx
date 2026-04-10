@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import HomeClient from "@/components/home/HomeClient/index.jsx";
+import HomeClient from "@/components/home/HomeClient";
 
 const heroSlides = [
   { src: "/tama.jpg", alt: "Tama Supermarket storefront" },
