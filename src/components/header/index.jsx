@@ -87,6 +87,7 @@ export default function Navbar() {
               href="https://www.instagram.com/tamasupermarket/"
               target="_blank"
               className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E58A3A] text-white hover:bg-[#C96F2C] transition"
+              aria-label="Follow us on instagram"
             >
               <FaInstagram size={16} />
             </a>
@@ -95,6 +96,7 @@ export default function Navbar() {
               href="https://www.facebook.com/profile.php?id=100066806259047"
               target="_blank"
               className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E58A3A] text-white hover:bg-[#C96F2C] transition"
+               aria-label="Follow us on facebook"
             >
               <FaFacebookF size={15} />
             </a>
