@@ -90,7 +90,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://wwww.facebook.com/tamasupermarket/"
+              href="https://www.facebook.com/profile.php?id=100066806259047"
               target="_blank"
               className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E58A3A] text-white hover:bg-[#C96F2C] transition"
             >
