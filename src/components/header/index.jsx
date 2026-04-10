@@ -14,7 +14,7 @@ const navigation = [
 
 export default function Navbar() {
   return (
-    <header className="w-full border-b border-neutral-200 bg-[#fff3eb]/80 backdrop-blur-md sticky top-0 z-50">
+    <header className="w-full border-b border-neutral-200 bg-[#f6d2c2]/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
         <div className="lg:hidden">
           <label htmlFor="my-drawer" className="cursor-pointer">
@@ -51,7 +51,7 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.link}
-              className="text-sm font-medium text-neutral-700 hover:text-black transition"
+             className="text-sm font-medium text-neutral-800 hover:text-black"
             >
               {item.name}
             </Link>
