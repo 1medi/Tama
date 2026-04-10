@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import HeroSection from "../heroSection/page.jsx";
-import InfoSection from "../infoSection/page.jsx";
-import AboutSection from "../aboutSection/page.jsx";
-import DepartmentsSection from "../departmentsSection/page.jsx";
-import FaqSection from "../faqSection/page.jsx";
+import HeroSection from "../heroSection/index.jsx";
+import InfoSection from "../infoSection/index.jsx";
+import AboutSection from "../aboutSection/index.jsx";
+import DepartmentsSection from "../departmentsSection/index.jsx";
+import FaqSection from "../faqSection/index.jsx";
 
 const faq = [
   {
