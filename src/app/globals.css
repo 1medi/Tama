@@ -10,12 +10,29 @@ body {
   font-family: var(--font-body), sans-serif;
 }
 
-/* override Tailwind serif globally */
+/* serif utility */
 .font-serif {
   font-family: var(--font-heading), serif;
 }
 
-h1, h2, h3 {
+/* heading defaults */
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-heading), serif;
-  letter-spacing: 0.02em; /* helps match logo feel */
+}
+
+/* optional: slightly different tracking by level */
+h1 {
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  letter-spacing: -0.03em;
+}
+
+h3,
+h4 {
+  letter-spacing: -0.02em;
 }

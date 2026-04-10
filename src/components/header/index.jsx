@@ -43,7 +43,9 @@ export default function Navbar() {
 
           {/* Centered logo */}
           <div className="absolute left-1/2 -translate-x-1/2">
-            <Image src={Tama} alt="Tama" height={40} />
+            <Link href="/" className="flex-shrink-0">
+              <Image src={Tama} alt="Tama" height={40} />
+            </Link>
           </div>
 
           {/* CTAs */}
@@ -101,10 +103,23 @@ export default function Navbar() {
       </div>
 
       {/* DRAWER (unchanged) */}
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <input
+        id="my-drawer"
+        type="checkbox"
+        className="drawer-toggle"
+        aria-label="Open navigation menu"
+      />
 
       <div className="drawer-side z-50">
-        <label htmlFor="my-drawer" className="drawer-overlay"></label>
+        <label htmlFor="my-drawer" className="sr-only">
+          Open navigation menu
+        </label>
+        <input
+          id="my-drawer"
+          type="checkbox"
+          className="drawer-toggle"
+          aria-label="Open navigation menu"
+        />
 
         <div className="w-72 min-h-full bg-white p-6 flex flex-col gap-6">
           {navigation.map((item) => (
