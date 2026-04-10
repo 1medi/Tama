@@ -1,24 +1,12 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import HomeClient from "@/components/home/homeClient/page.jsx";
+import HomeClient from "@/components/home/HomeClient/page.jsx";
 
 const heroSlides = [
-  {
-    src: "/tama.jpg",
-    alt: "Tama Supermarket storefront",
-  },
-  {
-    src: "/2.jpg",
-    alt: "Fresh produce at Tama Supermarket",
-  },
-  {
-    src: "/3.jpg",
-    alt: "Products and shelves at Tama Supermarket",
-  },
-  {
-    src: "/IMG_8646.jpg",
-    alt: "Products and shelves at Tama Supermarket",
-  },
+  { src: "/tama.jpg", alt: "Tama Supermarket storefront" },
+  { src: "/2.jpg", alt: "Fresh produce at Tama Supermarket" },
+  { src: "/3.jpg", alt: "Products and shelves at Tama Supermarket" },
+  { src: "/IMG_8646.jpg", alt: "Products and shelves at Tama Supermarket" },
 ];
 
 const storeInfo = {
